@@ -1,6 +1,6 @@
-1. Podłączenie do bazy danych
-2. Ustawienie zmiennych środowiskowych
-3. Utworzenie modelu danych
+1. Podłączenie do bazy danych +
+2. Ustawienie zmiennych środowiskowych +
+3. Utworzenie modelu danych +
 4. Podłączenie do API pogodowego
 5. Pobranie danych z api
 6. Zapis danych do bazy danych
