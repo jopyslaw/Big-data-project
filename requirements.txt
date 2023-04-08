@@ -1,0 +1,7 @@
+SQLAlchemy
+matplotlib
+requests
+pandas
+psycopg2
+python-dotenv
+schedule

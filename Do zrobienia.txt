@@ -1,0 +1,10 @@
+1. Podłączenie do bazy danych
+2. Ustawienie zmiennych środowiskowych
+3. Utworzenie modelu danych
+4. Podłączenie do API pogodowego
+5. Pobranie danych z api
+6. Zapis danych do bazy danych
+7. Utworzenie schedulera który będzie pobierał dane z API o danej porze
+8. Pobranie danych przez użtykownika w każdym momencie
+9. Analiza danych pogodowych
+10. Utworzenie okienka do wyświetlania danych
