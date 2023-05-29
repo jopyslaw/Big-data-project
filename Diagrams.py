@@ -78,3 +78,12 @@ class WeatherDiagrams:
 
         # wyświetlenie histogramu
         plt.show()
+    
+    def temp(self):
+        dates, avg_temperatures = self.app_managment.crud.temp2()
+
+        plt.plot(dates, avg_temperatures)
+        plt.xlabel('Days')
+        plt.ylabel('Average Temperature')
+        plt.title('Average Temperature by Days')
+        plt.show()

@@ -38,6 +38,7 @@ class MyGui():
         self.diagrams.rain_to_precipitations_diagram()
         self.diagrams.temperature_std_diagram()
         self.diagrams.temp_histogram()
+        self.diagrams.temp()
 
     def update_data(self):
         self.app_managment.run()
