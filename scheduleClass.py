@@ -12,7 +12,7 @@ class Schedule:
         self.appManagment = appManagment
         self.schedule = Scheduler()
         self.is_running = False
-        self.schedule.daily(dt.time(12,37), self.run)
+        self.schedule.daily(dt.time(3,0), self.run)
     
     def start(self):
         self.is_running = True
