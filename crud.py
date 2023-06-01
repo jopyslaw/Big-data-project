@@ -5,11 +5,16 @@ from models import WeatherData
 import pandas as pd
 from sqlalchemy.sql import func
 from datetime import datetime
+from RetryingQuery import RetryingQuery
 
 class Crud:
     def __init__(self, database_uri):
-        self.engine = create_engine(database_uri)
-        self.Session = sessionmaker(bind=self.engine)
+        self.engine = create_engine(database_uri,pool_size=10,
+                                      max_overflow=2,
+                                      pool_recycle=300,
+                                      pool_pre_ping=True,
+                                      pool_use_lifo=True)
+        self.Session = sessionmaker(bind=self.engine, query_cls=RetryingQuery)
         #self.recreate_database()
 
     
