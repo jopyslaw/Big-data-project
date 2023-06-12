@@ -15,7 +15,7 @@ class WeatherDiagrams:
         ax.plot(hours, temperatures, label='Temperature')
         ax.plot(hours, apparent_temperatures, label='Apparent Temperature')
         ax.set_title('Comparison of Temperature and Apparent Temperature')
-        ax.set_xlabel('Hours')
+        ax.set_xlabel('Days')
         ax.set_ylabel('Temperature (°C)')
         ax.legend()
 
@@ -87,3 +87,13 @@ class WeatherDiagrams:
         plt.ylabel('Average Temperature')
         plt.title('Average Temperature by Days')
         plt.show()
+    
+    def wind(self):
+        dates, winds = self.app_managment.crud.wind()
+
+        plt.plot(dates, winds)
+        plt.xlabel('Days')
+        plt.ylabel('Average Wind (km\h)')
+        plt.title('Average Wind Speed by days')
+        plt.show()
+

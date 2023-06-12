@@ -129,6 +129,23 @@ class Crud:
         dates = [datetime.strptime(date.strftime('%Y-%m-%d'), '%Y-%m-%d') for date in dates]
 
         return dates, avg_temperatures
+    
+    def wind(self):
+        session = self.Session()
+        # Pobranie danych grupujących po dacie (bez godziny i minut) i obliczenie średniej temperatury dla każdej grupy
+        query = session.query(func.avg(WeatherData.windspeed_180m), func.date(WeatherData.creation_time)).group_by(func.date(WeatherData.creation_time)).order_by(func.date(WeatherData.creation_time))
+
+        # Wykonanie zapytania i pobranie wyników
+        results = query.all()
+
+        # Podział wyników na dwie listy: daty i średnie temperatury
+        dates = [result[1] for result in results]
+        avg_winds = [result[0] for result in results]
+
+        # Konwersja daty na obiekt datetime
+        dates = [datetime.strptime(date.strftime('%Y-%m-%d'), '%Y-%m-%d') for date in dates]
+
+        return dates, avg_winds
 
 
     def xd(self):
