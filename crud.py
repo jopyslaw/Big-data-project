@@ -91,7 +91,7 @@ class Crud:
     def get_rain(self):
         session = self.Session()
         query = session.query(func.avg(WeatherData.precipitation), func.date(WeatherData.creation_time), func.avg(WeatherData.rain)).group_by(func.date(WeatherData.creation_time)).order_by(func.date(WeatherData.creation_time))
-        #results = session.query(WeatherData.hour, WeatherData.precipitation, WeatherData.rain).all()
+   
 
         results = query.all()
 
@@ -99,10 +99,6 @@ class Crud:
         avg_rain = [result[2] for result in results]
         avg_precipitation = [result[0] for result in results]
 
-        # przypisanie kolumn do zmiennych
-        #hours = [result.hour for result in results]
-        #precipitations = [result.precipitation for result in results]
-        #rains = [result.rain for result in results]
         return dates, avg_precipitation, avg_rain
     
 
@@ -132,17 +128,14 @@ class Crud:
     
     def wind(self):
         session = self.Session()
-        # Pobranie danych grupujących po dacie (bez godziny i minut) i obliczenie średniej temperatury dla każdej grupy
+        
         query = session.query(func.avg(WeatherData.windspeed_180m), func.date(WeatherData.creation_time)).group_by(func.date(WeatherData.creation_time)).order_by(func.date(WeatherData.creation_time))
 
-        # Wykonanie zapytania i pobranie wyników
         results = query.all()
 
-        # Podział wyników na dwie listy: daty i średnie temperatury
         dates = [result[1] for result in results]
         avg_winds = [result[0] for result in results]
 
-        # Konwersja daty na obiekt datetime
         dates = [datetime.strptime(date.strftime('%Y-%m-%d'), '%Y-%m-%d') for date in dates]
 
         return dates, avg_winds
